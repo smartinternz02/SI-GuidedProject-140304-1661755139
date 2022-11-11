@@ -1,0 +1,219 @@
+<html>
+    <head>
+        <title> Customer Segmentation</title>
+        <link rel = "icon" type = "image/jpg" href = "/static/CS.jpg"/>
+        <style>
+        body{
+            background: #EDFBF5;
+            color: #125447;
+            margin: 0;
+        }
+        .header{
+            padding: 10;
+            background: #1abc9c;
+            color: white;
+            width: 100%;
+        }
+        .logo {
+        float: left;
+        margin-left: 150px;
+        }
+        .TextV{
+        display: inline;
+        font-size: 50px;
+        margin-left: 80px;
+        }
+        .Textb{
+        display: inline;
+        font-size: 30px;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+        }
+        .left{
+            float: left;
+        }
+        .right{
+        background: #F0FFFF;
+        display: inline-block;
+        height: 380;
+        margin: 5px;
+        width: 30%;
+        border: 8px solid #808080;
+        margin-left: 50px;
+        margin-top: 50px;
+        color: #18695A;
+        }
+        .rright li{
+            display: inline;
+            font-size: 230%;
+        }
+        #button{
+            background-color: #AFEEEE;
+            border: 2px solid #808080;
+            color: #696969;
+            padding: 10px 26px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+        }
+        #button:hover{
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+        .footer {
+            clear: both;
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #1abc9c;
+            color: white;
+            text-align: center;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <div class = "logo">
+                
+                    <img src = "/static/CS.jpg" alt = "Logo" width = "70" height = "60">
+                
+            </div>
+            <div class = "TextV">
+                Customer Segmentation 
+            </div>
+            <div class = "Textb">
+                with Machine Learning
+            </div>
+        </div>
+        <div class = "left">
+            <img src = "/static/CS.jpg" alt = "Logo" width = "100%" height = "90%">
+        </div>    
+        <div class="right">
+            <ul class="rright">
+                <li><p>Customer Details</p></li>
+                
+            </style></head>
+
+                <form action ="{{ url_for('predict')}}" method="post"> 
+                <table>
+
+                  <tr><td>                 
+            
+                <label for ="Sex">Sex:</label></td>
+       <td>     <select id="Sex" name="Sex">
+                    <option value=0>Female</option>
+                    <option value=1>Male</option>
+                </select> &nbsp;&nbsp;</td>
+                </tr>
+<tr><td>            
+                <label for ="MaritalStatus">Marital status:</label> </td> 
+                <td><select id="MaritalStatus" name="MaritalStatus">
+                    <option value=0>Single</option>
+                    <option value=1>Married</option>
+                </select> &nbsp;&nbsp;</td>
+            </tr>
+
+                <tr> <td><label>Age:</label></td>
+                <td><input type="number" min="20" max="80" name="Age" placeholder="Age " required ="required" />
+                </td></tr>
+
+            <tr><td>
+                <label>Education:</label></td>
+                <td><input type="number" min="0" max="3" name="Education" placeholder="Education " required ="required" />
+                </td></tr>
+
+            <tr><td>
+                <label>Income:</label></td>
+                <td><input type="number" min="5000" name="Income" placeholder="Income " required ="required" /></td>
+            </tr>
+
+               <tr> <td><label for ="Occupation">Occupation:</label></td>
+                <td><select id="Occupation" name="Occupation">
+                    <option value=0>Not working</option>
+                    <option value=1>Working</option>
+                    <option value=2>Business</option>
+                </select> &nbsp;&nbsp;</td><tr>
+            
+           <tr><td>
+            
+                <label for ="SettlementSize">Settlement size:</label></td>
+              <td>  <select id="SettlementSize" name="SettlementSize">
+                    <option value=1>1</option>
+                    <option value=0>0</option>
+                    <option value=2>2</option>
+                </select> &nbsp;&nbsp;</td> </tr>
+            
+		  <tr><td>
+		<button type ="submit" id="button" >Potentiality</button></td>
+        <td></td></tr>
+    </table>    </form>
+<!--class ="btn btn-primary btn-block btn-large"-->
+                <br>
+
+                <br>
+
+                <br>
+
+		<h1>   {{ prediction_text }}   </h1>
+            
+                <!--<form action="/predict" method="POST">
+                    <table>
+                        <tr>
+                            <td>Age :</td>
+                            <td><input type="number" placeholder="Age" name="Age" required></td>
+                        </tr>
+                        <tr>
+                            <td>Occupation :</td>
+                            <td><input type="number" placeholder="Occupation" name="Occupation" required></td>
+                        </tr>
+                        <tr>
+                            <td>Income :</td>
+                            <td>
+                                <input type="number" placeholder="Income" name="Income" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Education :</td>
+                            <td>
+                                <input type="number" placeholder="Education" name="Education" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Settlement Size :</td>
+                            <td>
+                                <input type="number" placeholder="SettlementSize" name="SettlementSize" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>MaritalStatus :</td>
+                            <td><input type="number" placeholder="MaritalStatus" name="MaritalStatus" required></td>
+                        </tr>
+                        <tr>
+                            <td>Gender :</td>
+                            <td><input type="number" placeholder="Gender" name="Gender" required></td>
+                        </tr>
+                        <tr>                 
+                            <td>
+                                <br>
+                                <br>
+                                <input type="submit" id="button" name="submit" value = "Potentiality">       
+                            </td>
+                        </tr>
+                    </table>
+                </form>-->
+              
+            </ul>
+
+        </div>
+
+        <br>
+        <div class="footer"><p>Kushal Yadav</p></div>
+    </body>
+</html>
